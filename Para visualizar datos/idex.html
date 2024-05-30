@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualización de Datos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="header">
+    <img src="LogoPoli.png" alt="Logo de la Universidad">
+    <h1>SOLICITUD DE CUPOS POLITÉCNICO</h1>
+  </div>
+  <div class="container">
+    <div class="cupos">
+      <p class="paradero-texto">Paradero #2 - calle 57</p>
+      <p>Número de cupos solicitados: <span id="cuposValor">0</span></p>
+    </div>
+  </div>
+  <script>
+    const socket = new WebSocket('ws://172.20.10.3:81/');
+    socket.onmessage = function(event) {
+      document.getElementById('cuposValor').innerText = event.data;
+    };
+  </script>
+</body>
+</html>
